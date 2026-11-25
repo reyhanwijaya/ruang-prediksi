@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Palet Ruang Prediksi (biru pastel). Terang = bawaan, gelap = kelas .dark */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1f2d3d;
+  --card: #ffffff;
+  --muted: #f4f8fd;
+  --muted-foreground: #6b7a8f;
+  --border: #dbe6f3;
+  --primary: #5b9bd5;
+  --primary-soft: #e8f1fb;
+  --primary-deep: #2f5d8c;
+  /* warna tombol utama: cukup gelap agar teks putih terbaca */
+  --solid: #2f5d8c;
+  --solid-foreground: #ffffff;
+  --accent: #ffd86b;
+  --success: #6fcf97;
+  --warning: #f4a261;
+  --danger: #e57373;
+}
+
+.dark {
+  --background: #0e1621;
+  --foreground: #e7eef6;
+  --card: #152131;
+  --muted: #1a2a3e;
+  --muted-foreground: #9db0c6;
+  --border: #273b54;
+  --primary: #6fa8dc;
+  --primary-soft: #1b2f48;
+  --primary-deep: #a9cdf0;
+  --solid: #6fa8dc;
+  --solid-foreground: #0b1420;
+  --accent: #ffd86b;
+  --success: #6fcf97;
+  --warning: #f4a261;
+  --danger: #e57373;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-deep: var(--primary-deep);
+  --color-solid: var(--solid);
+  --color-solid-foreground: var(--solid-foreground);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Sembunyikan scrollbar pada baris menu yang bisa digeser di HP */
+.tanpa-scrollbar {
+  scrollbar-width: none;
+}
+.tanpa-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Halaman ujian tidak boleh tercetak */
+@media print {
+  .sembunyi-cetak {
+    display: none !important;
+  }
 }
