@@ -137,3 +137,32 @@ export interface KodeSaya {
   mulai_pada: string | null;
   dibuat_pada: string;
 }
+
+// ------------------------------------------------------------- RIWAYAT DETAIL
+
+export type StatusSoalRiwayat = "benar" | "salah" | "sebagian" | "kosong" | "menunggu";
+
+export interface SoalRiwayat {
+  nomor: number;
+  jenis: JenisSoal;
+  teks: string;
+  gambar_url: string | null;
+  bobot: number;
+  opsi: OpsiSoal[];
+  kunci: string | null;
+  jawaban_benar: string[] | null;
+  pembahasan: string | null;
+  jawaban: string | null;
+  nilai: number | null;
+  komentar: string | null;
+  status: StatusSoalRiwayat;
+}
+
+export interface DetailRiwayat {
+  ujian: { id: string; judul: string };
+  mulai_pada: string | null;
+  selesai_pada: string | null;
+  hasil: HasilSesi;
+  soal: SoalRiwayat[];
+  pelanggaran: { jenis: string; waktu: string }[];
+}

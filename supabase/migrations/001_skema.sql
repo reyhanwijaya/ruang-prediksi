@@ -374,3 +374,23 @@ create policy log_admin_tambah on public.log_admin for insert to authenticated
 --   update public.profiles set peran = 'admin' where email = 'emailmu@gmail.com';
 --
 -- ---------------------------------------------------------------------
+
+-- ---------------------------------------------------------------------
+-- 6. IZIN TABEL
+-- Project Supabase baru tidak lagi memberi izin otomatis ke role
+-- "authenticated". Izin ini hanya membuka pintu tabel; baris yang boleh
+-- dibaca/diubah tetap dibatasi kebijakan RLS di atas.
+-- ---------------------------------------------------------------------
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on
+  public.profiles,
+  public.kategori,
+  public.ujian,
+  public.soal,
+  public.kode_ujian,
+  public.pemakaian_kode,
+  public.jawaban,
+  public.nilai_esai,
+  public.log_pelanggaran,
+  public.log_admin
+to authenticated;

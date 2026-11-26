@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ClipboardList, FolderTree, KeyRound, LayoutDashboard, LogOut, Users } from "lucide-react";
+import { ClipboardList, FolderTree, KeyRound, LayoutDashboard, LogOut, PenLine, Users } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,7 @@ const MENU = [
   { href: "/admin/kategori", label: "Kategori", ikon: FolderTree },
   { href: "/admin/ujian", label: "Ujian & soal", ikon: ClipboardList },
   { href: "/admin/kode", label: "Kode ujian", ikon: KeyRound },
+  { href: "/admin/esai", label: "Nilai esai", ikon: PenLine },
 ];
 
 export function AdminShell({ children, nama }: { children: React.ReactNode; nama: string | null }) {

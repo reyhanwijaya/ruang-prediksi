@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ClipboardList } from "lucide-react";
 import { Badge, Card, EmptyState, PageHeader } from "@/components/ui/card";
 import { requireProfile } from "@/lib/auth";
@@ -52,7 +53,8 @@ export default async function Riwayat() {
             const u = Array.isArray(b.ujian) ? b.ujian[0] : b.ujian;
             return (
               <li key={b.id}>
-                <Card className="flex items-center justify-between gap-4">
+                <Link href={`/riwayat/${b.id}`} className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                <Card className="flex items-center justify-between gap-4 transition-colors hover:bg-muted/60">
                   <div className="min-w-0">
                     <p className="truncate font-bold">{u?.judul ?? "Ujian"}</p>
                     <p className="mt-0.5 text-xs text-muted-foreground">{formatTanggal(b.mulai_pada)}</p>
@@ -70,6 +72,7 @@ export default async function Riwayat() {
                     <p className="text-[11px] text-muted-foreground">skor</p>
                   </div>
                 </Card>
+                </Link>
               </li>
             );
           })}

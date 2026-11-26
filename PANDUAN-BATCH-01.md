@@ -197,6 +197,7 @@ Setelah dapat alamat Vercel (mis. `ruang-prediksi.vercel.app`), kembali ke Supab
 | `Invalid API key` / halaman error Supabase | `.env.local` belum diisi, atau server belum dimulai ulang |
 | `redirect_uri_mismatch` dari Google | Redirect URI di Google Cloud harus persis sama dengan Callback URL dari Supabase |
 | Setelah login kembali ke `/?galat=masuk` | Redirect URLs di Supabase belum memuat `http://localhost:3000/**` |
+| `permission denied for table ...` (kode 42501), atau akun admin tetap tampil sebagai peserta | Jalankan ulang `001_skema.sql` (bagian 6 berisi izin tabel untuk role `authenticated`) |
 | `relation "public.kategori" does not exist` | SQL langkah 5 belum dijalankan |
 | Sudah di-`update` jadi admin tapi tetap ditolak | Email pada `update` harus persis sama dengan email Google; keluar lalu masuk lagi |
 | Next menampilkan peringatan soal `proxy.ts` / `middleware` | Jika versi Next kamu 15 (bukan 16), ubah nama `src/proxy.ts` menjadi `src/middleware.ts` dan nama fungsi `proxy` menjadi `middleware` |

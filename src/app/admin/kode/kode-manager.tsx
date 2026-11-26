@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
+import Link from "next/link";
 import { Ban, Check, Copy, Plus, RotateCcw, Undo2 } from "lucide-react";
 import { HapusTombol } from "@/components/hapus-tombol";
 import { Button } from "@/components/ui/button";
@@ -291,6 +292,11 @@ function BarisKodeKartu({
                     <span className="text-xs text-muted-foreground">
                       skor {p.skor === null ? "–" : Math.round(p.skor)} · {p.pelanggaran} pelanggaran
                     </span>
+                  )}
+                  {p.status !== "berjalan" && (
+                    <Link href={`/riwayat/${p.id}`} className="text-xs font-bold text-primary-deep underline">
+                      Detail
+                    </Link>
                   )}
                   <Button variant="ghost" size="sm" onClick={() => onReset(p.id, nama)}>
                     <RotateCcw className="size-4" /> Reset
