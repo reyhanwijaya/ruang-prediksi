@@ -15,8 +15,10 @@ export const getProfile = cache(async (): Promise<Profile | null> => {
   if (!user) return null;
 
   const supabase = await createClient();
-  const { data } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
+  const { data, error } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
   if (data) return data as Profile;
+  // Galat database (mis. izin tabel belum diberikan) jangan disembunyikan diam-diam.
+  if (error) console.error("[getProfile] gagal membaca profil:", error.code, error.message);
 
   const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
   return {
