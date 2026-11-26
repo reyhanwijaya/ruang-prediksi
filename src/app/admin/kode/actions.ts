@@ -22,6 +22,8 @@ function pesanDb(e: { code?: string; message: string }) {
 
 function segarkan() {
   revalidatePath("/admin/kode");
+  revalidatePath("/admin/pemakaian");
+  revalidatePath("/admin");
 }
 
 const buatSchema = z.object({
