@@ -2,6 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Pengaturan bawaan create-next-app agar Tailwind memproses file CSS. Jangan dihapus.
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+    },
+  },
+  // Header keamanan dasar.
   async headers() {
     return [
       {
